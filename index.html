@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PulseCore | Live Demo &amp; APK Download Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #dbeafe;
+            --accent: #38bdf8;
+            --dark: #0f172a;
+            --dark-card: #1e293b;
+            --slate: #334155;
+            --text-muted: #94a3b8;
+            --light-bg: #f8fafc;
+            --white: #ffffff;
+            --radius: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0b132b 0%, #1c2541 50%, #0b132b 100%);
+            color: #f1f5f9;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            flex: 1;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .badge-verified {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(37, 99, 235, 0.15);
+            border: 1px solid rgba(37, 99, 235, 0.4);
+            color: #60a5fa;
+            padding: 6px 16px;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+            background: linear-gradient(to right, #ffffff, #93c5fd, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .action-card {
+            background: rgba(30, 41, 59, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius);
+            padding: 36px;
+            text-align: center;
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+            margin-bottom: 30px;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: #ffffff;
+            font-size: 1.2rem;
+            font-weight: 700;
+            padding: 16px 36px;
+            border-radius: 9999px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.5);
+            margin-bottom: 15px;
+        }
+
+        .btn-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px -5px rgba(37, 99, 235, 0.7);
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+        }
+
+        .download-meta {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .credential-box {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .credential-box h3 {
+            font-size: 1.1rem;
+            color: #ffffff;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cred-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 8px;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .cred-label {
+            color: var(--text-muted);
+        }
+
+        .cred-value {
+            font-family: monospace;
+            font-weight: 600;
+            color: #38bdf8;
+            background: rgba(56, 189, 248, 0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-top: 30px;
+        }
+
+        .feature-item {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+        }
+
+        .feature-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            background: rgba(37, 99, 235, 0.15);
+            color: #60a5fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.05rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 24px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: #60a5fa;
+            text-decoration: none;
+        }
+
+        @media (max-width: 640px) {
+            h1 { font-size: 2rem; }
+            .action-card { padding: 24px 18px; }
+            .btn-download { width: 100%; font-size: 1.05rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="badge-verified">
+                <i class="fas fa-shield-check"></i> Official Envato CodeCanyon Demo Portal
+            </div>
+            <h1>PulseCore Live Demo</h1>
+            <p class="subtitle">AI Fitness Workout Flutter App with Node.js REST API Backend &amp; React Web Admin Panel</p>
+        </header>
+
+        <div class="action-card">
+            <h2 style="font-size: 1.5rem; margin-bottom: 8px;">📱 Test the Android Mobile App</h2>
+            <p style="color: var(--text-muted); margin-bottom: 24px;">Download and install the live release demo APK directly on your Android phone or emulator to test real-time workouts, custom routine builder, smart trainer booking, body &amp; hydration analytics, and Google Gemini AI fitness intelligence.</p>
+            
+            <a href="https://drive.google.com/file/d/1oA0jOdTDBqjIfKbRZjbLsmROonW_OwaE/view?usp=sharing" target="_blank" class="btn-download">
+                <i class="fab fa-android"></i> Download Demo APK (Android)
+            </a>
+            <div class="download-meta">
+                <span><i class="fas fa-check-circle" style="color: #34d399;"></i> 100% Live Backend Connected</span> &bull; 
+                <span><i class="fas fa-bolt" style="color: #38bdf8;"></i> Target SDK 36</span> &bull; 
+                <span><i class="fas fa-lock" style="color: #fbbf24;"></i> Virus &amp; Malware Free</span>
+            </div>
+        </div>
+
+        <div style="max-width: 520px; margin: 0 auto 30px auto;">
+            <!-- Mobile App Credentials -->
+            <div class="credential-box">
+                <h3><i class="fas fa-mobile-alt" style="color: #38bdf8;"></i> Mobile App Demo Account</h3>
+                <div class="cred-item">
+                    <span class="cred-label">Email:</span>
+                    <span class="cred-value">athlete.demo@pulsecore.com</span>
+                </div>
+                <div class="cred-item">
+                    <span class="cred-label">Password:</span>
+                    <span class="cred-value">password123</span>
+                </div>
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 10px;">
+                    * Pre-loaded with workouts, custom routines, body tracking, hydration logs, and trainer consultations. You can also sign up a new account inside the app.
+                </p>
+            </div>
+        </div>
+
+        <div class="feature-list">
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-dumbbell"></i></div>
+                <div>Workouts &amp; Custom Builder</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-robot"></i></div>
+                <div>Gemini AI Coach &amp; Plans</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-user-tie"></i></div>
+                <div>Smart Trainers &amp; Bookings</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-heartbeat"></i></div>
+                <div>Body Metrics, Hydration &amp; PRs</div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 PulseCore. All Rights Reserved. AI-Powered Fitness Workout &amp; Personal Coaching Suite.</p>
+        <p style="margin-top: 6px;">Available exclusively on <a href="https://codecanyon.net" target="_blank">Envato CodeCanyon</a>.</p>
+    </footer>
+
+</body>
+</html>
